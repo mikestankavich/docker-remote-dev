@@ -161,6 +161,15 @@ terraform/
 - [ ] Shellcheck linting
 - [ ] Release automation
 
+### Phase 4b: Open Source Hygiene
+- [ ] Branch protection rules (require PR for main)
+- [ ] CONTRIBUTING.md (how to contribute, PR process, coding standards)
+- [ ] CODE_OF_CONDUCT.md (Contributor Covenant or similar)
+- [ ] SECURITY.md (vulnerability reporting process)
+- [ ] Issue templates (bug report, feature request)
+- [ ] PR template
+- [ ] License headers in source files (MPL-2.0)
+
 ### Phase 5: Future Enhancements (backlog)
 - [ ] Spot/preemptible instance support (cost savings)
 - [ ] Instance stop/start (vs destroy) for cost management
