@@ -136,8 +136,12 @@ terraform/
 - [ ] Make instance_type variable actually work
 - [ ] Replace `userdata.tpl` with `cloud-init.yaml`
 - [ ] Wire Terraform outputs to Ansible variables
-- [ ] Complete justfile (install, destroy, status commands)
-- [ ] Add destroy functionality
+- [ ] Complete justfile commands:
+  - [ ] `just install` - provision and configure
+  - [ ] `just destroy` - tear down instance
+  - [ ] `just status` - show instance state and IP
+  - [ ] `just ssh` - quick SSH connection
+  - [ ] `just logs` - tail cloud-init logs for debugging
 - [ ] Update README with working instructions
 
 ### Phase 2: Multi-Cloud (~12-15 hours)
@@ -173,11 +177,28 @@ terraform/
 ### Phase 5: Future Enhancements (backlog)
 - [ ] Spot/preemptible instance support (cost savings)
 - [ ] Instance stop/start (vs destroy) for cost management
-- [ ] Pre-populated Docker images (faster startup)
+- [ ] Packer images with Docker pre-installed (faster provisioning)
 - [ ] Volume persistence across destroy/create cycles
-- [ ] rsync/mutagen for bind mount emulation
-- [ ] VS Code Remote SSH auto-configuration
 - [ ] Rust CLI replacement for justfile (stretch goal)
+
+---
+
+## Key Challenge: File Synchronization
+
+Remote Docker means bind mounts don't work (local files aren't on remote). Two approaches:
+
+### Approach A: Edit Remotely (recommended)
+- Use VS Code Remote SSH or JetBrains Gateway
+- Files live on remote, edit happens over SSH
+- No sync needed, bind mounts work (remote-to-remote)
+- This is likely the primary use case
+
+### Approach B: Edit Locally, Sync to Remote
+- Use mutagen, rsync+fswatch, or unison
+- More complex, latency on large projects
+- Better for offline work or slow connections
+
+**Phase 3 addition:** Auto-configure VS Code Remote SSH and JetBrains Gateway connection strings in local config.
 
 ---
 
