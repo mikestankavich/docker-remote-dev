@@ -18,9 +18,11 @@ and setting up your local system to easily access that remote via ssh and docker
 - Update terraform.tfvars with your AWS credentials, SSH key details, network details, and instance size preference
 - Run `just install` 
 
-### Features under consideration for future releases:
-- Support other cloud providers 
-- Set up an automated rsync or similar to enable bind mounts to work seamlessly between remote and local
-with inotifywait https://www.baeldung.com/linux/monitor-changes-directory-tree
+### Roadmap
 
-Currently no plans to support windows, but will be glad to review any PRs :)
+See [ROADMAP.md](ROADMAP.md) for:
+- Multi-cloud support plans (Hetzner, Vultr, DigitalOcean)
+- Architecture decisions (cloud-init, mesh networking)
+- Detailed feature backlog
+
+Currently no plans to support Windows, but will be glad to review any PRs :)
